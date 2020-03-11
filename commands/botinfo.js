@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("Bot Naam", bot.user.username)
         .setThumbnail(botIcon)
         .addField("Gemaakt op:", bot.user.createdAt)
-        .setFooter("Excaid's Community", message.guild.iconURL).setTimestamp()
+        .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
         .setColor('#ff0000');
 
     return message.channel.send(botEmbed);

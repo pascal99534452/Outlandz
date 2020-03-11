@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("Idee:", idee)
         .addField("Ingezonden door:", message.author)
         .setColor('#ff0000')
-        .setFooter("Excaid's Community", message.guild.iconURL).setTimestamp()
+        .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
  
     // Vind het kanaal.
     var ideeChannel = message.guild.channels.find(`name`, "👀・suggesties");

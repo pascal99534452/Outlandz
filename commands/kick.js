@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("Speler:", member)
         .addField("Gekicked door:", message.author)
         .addField("Reden:", reason)
-        .setFooter("Excaid's Community", message.guild.iconURL).setTimestamp()
+        .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
 
         var kicknn = new discord.RichEmbed()
         .setTitle("Kick Systeem")    
@@ -32,7 +32,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("Speler:", member)
         .addField("Gekicked door:", message.author)
         .addField("Reden:", reason)
-        .setFooter("Excaid's Community", message.guild.iconURL).setTimestamp()
+        .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
     kickChannel.send(kickk)
     message.channel.send(kicknn)
 }

@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
     var banChannel = message.guild.channels.find(`name`, "⛔・logs");
     let member = message.mentions.members.first();
 
-    if (!message.member.roles.some(r => ["♛ | Founder", "✘ | Management", "✘ | DC Staff"].includes(r.name)))
+    if (!message.member.roles.some(r => ["♛ | Founder", "✘ | Staff"].includes(r.name)))
         return message.reply(":no_entry: | Jij hebt geen toegang tot dit commando!");
     if (!member)
         return message.reply(":no_entry: | Je moet wel een speler kiezen die je wilt verbannen!");
@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("Speler:", member)
         .addField("Gebanned door:", message.author)
         .addField("Reden:", reason)
-        .setFooter("Excaid's Community", message.guild.iconURL).setTimestamp()
+        .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
 
         var bannn = new discord.RichEmbed()
         .setTitle("Ban Systeem")    
@@ -32,7 +32,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("Speler:", member)
         .addField("Gebanned door:", message.author)
         .addField("Reden:", reason)
-        .setFooter("Excaid's Community", message.guild.iconURL).setTimestamp()
+        .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
     banChannel.send(bann)
     message.channel.send(bannn)
 }

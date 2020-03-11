@@ -33,7 +33,7 @@ module.exports.run = async (bot, message, args) => {
     var embedCreateTicket = new discord.RichEmbed()
         .setTitle("Ticket Systeem")
         .setDescription("Je support kanaal is succesvol aangemaakt!")
-        .setFooter("Excaid's Community", message.guild.iconURL).setTimestamp()
+        .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
         .setColor('#ff0000');
 
     message.channel.send(embedCreateTicket)
@@ -64,7 +64,7 @@ module.exports.run = async (bot, message, args) => {
             var embedParent = new discord.RichEmbed()
                 .setTitle("Ticket Systeem")
                 .setDescription("Zet hier je bericht in, Een stafflid helpt je zo snel mogelijk!")
-                .setFooter("Excaid's Community", 'https://imgur.com/Z9RQQto').setTimestamp()
+                .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
                 .setColor('#ff0000');
 
             settedParent.send(embedParent);

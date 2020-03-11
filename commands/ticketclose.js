@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
         .setTitle("Ticket Systeem")
         .addField("Ticket maker:", message.channel.name)
         .addField("Gesloten door:", message.author)
-        .setFooter("Excaid's Community", message.guild.iconURL).setTimestamp()
+        .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
         .setColor('#ff0000');
 
     // Vind kanaal voor de logs.

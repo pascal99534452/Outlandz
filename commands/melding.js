@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
             .setColor("#ff0000")
             .setDescription(`Om een melding te maken voer je het volgende uit: \n !melding Titel ${splitser} Bericht ${splitser} Kleur ${splitser} Kanaal`)
             .setColor('#ff0000')
-            .setFooter("Excaid's Community", message.guild.iconURL).setTimestamp()
+            .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
 
         return message.channel.send(useMessage);
     }
@@ -38,7 +38,7 @@ module.exports.run = async (bot, message, args) => {
     .setTitle(`${options.titel}`)
     .setColor(options.kleur)
     .setDescription(`${options.bericht}`)
-    .setFooter("Excaid's Community", 'https://imgur.com/Z9RQQto').setTimestamp()
+    .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
 
     var announcementChannel = message.guild.channels.find(`name`, options.kanaal);
     if (!announcementChannel) return message.channel.send("Ik kan het kanaal niet vinden! :frowning:")

@@ -30,7 +30,7 @@ bot.on("ready", async () => {
 
    console.log(`${bot.user.username} is online!`)
 
-   bot.user.setActivity("Excaid's Community", { type: "PLAYING" });
+   bot.user.setActivity("Outlandz's Community", { type: "PLAYING" });
 
 })
 
@@ -64,7 +64,7 @@ bot.on("guildMemberAdd", member => {
       .setTitle(`Welkom  ${member.user.tag}!`)
       .setDescription("Veel plezier op onze discord server.")
       .setColor('#ff0000')
-      .setFooter("Excaid's Community", 'https://imgur.com/Z9RQQto').setTimestamp()
+      .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
       .setThumbnail(member.user.displayAvatarURL);
 
    channel.send(joinMessage);
