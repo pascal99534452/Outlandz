@@ -3,7 +3,7 @@ const discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
 
     // Id van category van tickets.
-    const categoryId = "687253002519707689";
+    const categoryId = "686844611968237568";
 
     // Als bericht in ticket kanaal is dan verwijder kanaal ander zend bericht
     if (message.channel.parentID == categoryId) {
