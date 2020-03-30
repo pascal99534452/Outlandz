@@ -1,19 +1,48 @@
-const discord = require("discord.js");
+const Discord = require('discord.js');
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = (client, message, args) =>{
 
-    var botIcon = bot.user.displayAvatarURL
+    function checkBots(guild) {
+        let botCount = 0;
+        guild.members.forEach(member => {
+            if(member.user.bot) botCount++;
+        });
+        return botCount;
+    }
+    
+    function checkMembers(guild) {
+        let memberCount = 0;
+        guild.members.forEach(member => {
+            if(!member.user.bot) memberCount++;
+        });
+        return memberCount;
+    }
 
-    var botEmbed = new discord.RichEmbed()
-    .setColor("#ff0000")
-    .setTitle("Server Info")
-    .setThumbnail(message.guild.iconURL)
-    .setAuthor(`${message.guild.name} Info`, message.guild.iconURL)
-    .addField("Server Naam:", `${message.guild.name}`, true)
-    .addField("Server Eigenaar:", `${message.guild.owner}`, true)
-    .addField("Aantal Leden:", `${message.guild.memberCount}`, true)
-    .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
-    return message.channel.send(botEmbed);
+    function checkOnlineUsers(guild) {
+        let onlineCount = 0;
+        guild.members.forEach(member => {
+            if(member.user.presence.status === "online")
+                onlineCount++; 
+        });
+        return onlineCount;
+    }
+
+    let sicon = message.guild.iconURL;
+    let serverembed = new Discord.RichEmbed()
+        .setAuthor(`Minetopia Leaks - Informatie`)
+        .setColor('#bcd1ff')
+        .addField('Server eigenaar', message.guild.owner, true)
+        .addField('Server regio', message.guild.region, true)
+        .addField("Server Naam", message.guild.name)
+        .addField('Aantal kanalen', message.guild.channels.size, true)
+        .addField('Aantal gebruikers', message.guild.memberCount)
+        .addField('Mensen', checkMembers(message.guild), true)
+        .addField('Bots', checkBots(message.guild), true)
+        .addField('Online', checkOnlineUsers(message.guild))
+        .setFooter("Minetopia Leaks", message.guild.iconURL).setTimestamp()
+        .setThumbnail(sicon);
+
+    return message.channel.send(serverembed);
 
 }
 

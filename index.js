@@ -30,7 +30,7 @@ bot.on("ready", async () => {
 
    console.log(`${bot.user.username} is online!`)
 
-   bot.user.setActivity("Outlandz's Community", { type: "PLAYING" });
+   bot.user.setActivity("Minetopia Leaks", { type: "WATCHING" });
 
 })
 
@@ -61,10 +61,10 @@ bot.on("guildMemberAdd", member => {
    if (!channel) console.log("Dit kanaal bestaat niet");
 
    var joinMessage = new discord.RichEmbed()
-      .setTitle(`Welkom  ${member.user.tag}!`)
-      .setDescription("Veel plezier op onze discord server.")
-      .setColor('#ff0000')
-      .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
+      .setTitle("Welkom " + member.user.username + "! :tada:")
+      .setDescription("Welkom op de officiële discord sever van Minetopia Leaks.")
+      .setColor('#bcd1ff')
+      .setFooter("Minetopia Leaks", bot.user.displayAvatarURL).setTimestamp()
       .setThumbnail(member.user.displayAvatarURL);
 
    channel.send(joinMessage);
@@ -78,4 +78,4 @@ if (!role) return;
 
 member.addRole(role);
 });
-bot.login(process.env.token);
+bot.login(botConfig.token);

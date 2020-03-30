@@ -1,18 +1,20 @@
-const discord = require("discord.js");
+const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
-    var member = message.member.user.tag;
-    
-    var botEmbed = new discord.RichEmbed()
-        .setTitle("Avatar" + message.author)
-        .setImage(message.author.displayAvatarURL)
-        .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
-        .setColor('#ff0000');
 
-    return message.channel.send(botEmbed);
+        const user = message.mentions.users.first() || message.author;
+
+        const avatarEmbed = new Discord.RichEmbed()
+            .setColor('#bcd1ff')
+            .setTitle("**Avatar**")
+            .setImage(user.avatarURL)
+            .setFooter("Minetopia Leaks", message.guild.iconURL).setTimestamp();
+        message.channel.send(avatarEmbed);
+    
+    
 
 }
 
 module.exports.help = {
-name: "avatar"
+    name: "avatar"
 }

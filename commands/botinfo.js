@@ -9,8 +9,8 @@ module.exports.run = async (bot, message, args) => {
         .addField("Bot Naam", bot.user.username)
         .setThumbnail(botIcon)
         .addField("Gemaakt op:", bot.user.createdAt)
-        .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
-        .setColor('#ff0000');
+        .setFooter("Minetopia Leaks", message.guild.iconURL).setTimestamp()
+        .setColor('#bcd1ff');
 
     return message.channel.send(botEmbed);
 

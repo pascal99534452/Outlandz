@@ -33,8 +33,8 @@ module.exports.run = async (bot, message, args) => {
     var embedCreateTicket = new discord.RichEmbed()
         .setTitle("Ticket Systeem")
         .setDescription("Je support kanaal is succesvol aangemaakt!")
-        .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
-        .setColor('#ff0000');
+        .setFooter("Minetopia Leaks", message.guild.iconURL).setTimestamp()
+        .setColor('#bcd1ff');
 
     message.channel.send(embedCreateTicket)
 
@@ -62,10 +62,11 @@ module.exports.run = async (bot, message, args) => {
             });
 
             var embedParent = new discord.RichEmbed()
-                .setTitle("Ticket Systeem")
-                .setDescription("Zet hier je bericht in, Een stafflid helpt je zo snel mogelijk!")
-                .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
-                .setColor('#ff0000');
+                .setTitle("Minetopia Leaks")
+                .setDescription("Heeft u even geduld, een stafflid zal z.s.m komen. Als er binnen 30 minuten niet gereageerd word, mag u taggen. We zullen uw ticket z.s.m behandelen.")
+                .addField("Ticket Eigenaar:", userName)
+                .setFooter("Minetopia Leaks", message.guild.iconURL).setTimestamp()
+                .setColor('#bcd1ff')
 
             settedParent.send(embedParent);
         }).catch(err => {

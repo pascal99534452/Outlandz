@@ -10,8 +10,8 @@ module.exports.run = async (bot, message, args) => {
         .setTitle("Aantal Discord Leden:")
         .addField("Leden:", memberCount)
         .setThumbnail(botIcon)
-        .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
-        .setColor('#ff0000')
+        .setFooter("Minetopia Leaks", message.guild.iconURL).setTimestamp()
+        .setColor('#bcd1ff')
 
     return message.channel.send(botEmbed);
 

@@ -1,9 +1,13 @@
-const discord = require("discord.js");
-
+const discord = module.require("discord.js");
 module.exports.run = async (bot, message, args) => {
 
-    // Id van category van tickets.
-    const categoryId = "686844611968237568";
+  var sluitEmbed = new discord.RichEmbed()
+                .setTitle("Minetopia Leaks")
+                .setColor('#bcd1ff')
+                .addField("Weet u zeker dat u dit ticket wilt sluiten? Om te bevestigen stuur:", "-bevestig")
+                .setFooter("Minetopia Leaks", message.guild.iconURL).setTimestamp()
+ 
+   const categoryId = "686844611968237568";
 
     // Als bericht in ticket kanaal is dan verwijder kanaal ander zend bericht
     if (message.channel.parentID == categoryId) {
@@ -15,24 +19,24 @@ module.exports.run = async (bot, message, args) => {
         message.channel.send(":no_entry: | Dit commando werkt alleen in een ticket!");
 
     }
-    var userName = message.author.username;
 
-    var embedCloseTicket = new discord.RichEmbed()
-        .setTitle("Ticket Systeem")
-        .addField("Ticket maker:", message.channel.name)
-        .addField("Gesloten door:", message.author)
-        .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
-        .setColor('#ff0000');
-
-    // Vind kanaal voor de logs.
-    var logChannel = message.guild.channels.find("name", "⛔・logs");
-    if (!logChannel) return message.channel.send("Kanaal bestaat niet");
-
-    logChannel.send(embedCloseTicket);
-
+    message.channel.send(sluitEmbed)
+    .then((m) => {
+      message.channel.awaitMessages(response => response.content === '-bevestig', {
+        max: 1,
+        time: 10000,
+        errors: ['time'],
+      })
+      .then((collected) => {
+          message.channel.delete();
+        })
+        .catch(() => {
+          m.edit('Ticket sluit time-out, het ticket is niet gesloten!').then(m2 => {
+              m2.delete();
+          }, 4000);
+        });
+    });
 }
-
 module.exports.help = {
-    name: "close",
-    description: "Sluit een ticket af"
+	name: "close"
 }

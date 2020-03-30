@@ -1,40 +1,30 @@
-const discord = require("discord.js");
+const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
+    
+        var banUser = message.guild.member(message.mentions.users.first() || message.guild.member(arguments[0]));
 
-    var banChannel = message.guild.channels.find(`name`, "⛔・logs");
-    let member = message.mentions.members.first();
+        if (!banUser) return message.channel.send("Gebruiker niet gevonden!").then(msg => msg.delete(1000));
 
-    if (!message.member.roles.some(r => ["♛ | Founder", "✘ | Staff"].includes(r.name)))
-        return message.reply(":no_entry: | Jij hebt geen toegang tot dit commando!");
-    if (!member)
-        return message.reply(":no_entry: | Je moet wel een speler kiezen die je wilt verbannen!");
-    if (!member.bannable)
-        return message.reply(":no_entry: | Jij kan geen staffleden verbannen!");
+        var reason = args.join(" ").slice(22);
 
-    let reason = args.slice(1).join(' ');
-    if (!reason) reason = "Geen reden gevonden";
+        if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(":no_entry: | U heeft niet deze permissies!").then(msg => msg.delete(1000));
 
-    await member.ban(reason)
-        .catch(error => message.reply(`Sorry ${message.author} Ik kan deze persoon niet bannen: ${error}`));
+        if (banUser.hasPermission("BAN_MEMBERS")) return message.channel.send(":no_entry: | U kunt deze persoon niet verbannen!").then(msg => msg.delete(1000));
 
-    var bann = new discord.RichEmbed()
-        .setTitle("Ban Systeem")    
-        .setColor("#ff0000")
-        .addField("Speler:", member)
-        .addField("Gebanned door:", message.author)
-        .addField("Reden:", reason)
-        .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
+        var ban = new discord.RichEmbed()
+            .setTitle("Ban Systeem")
+            .setColor('#bcd1ff')
+            .addField("Verbannen persoon", banUser)
+            .addField("Gebanned door", message.author)
+            .addField("Reden", reason)
+            .setFooter("Minetopia Leaks", message.guild.iconURL).setTimestamp()
 
-        var bannn = new discord.RichEmbed()
-        .setTitle("Ban Systeem")    
-        .setColor("#ff0000")
-        .addField("Speler:", member)
-        .addField("Gebanned door:", message.author)
-        .addField("Reden:", reason)
-        .setFooter("Outlandz's Community", message.guild.iconURL).setTimestamp()
-    banChannel.send(bann)
-    message.channel.send(bannn)
+        var banChannel = message.guild.channels.find(c => c.name === "⛔・logs");
+        if (!banChannel) return message.channel.send("Kan het logs kanaal niet vinden!").then(msg => msg.delete(1000));
+
+        message.guild.member(banUser).ban(reason).then(e => banChannel.send(ban)).catch(e => message.channel.send("Error: " + e));
+
 }
 
 module.exports.help = {

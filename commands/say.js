@@ -1,15 +1,18 @@
 const Discord = require("discord.js");
-
 module.exports.run = async (bot, message, args) => {
-  if (!message.member.roles.some(r => ["♛ | Founder", "✘ | Management", "✘ | DC Staff"].includes(r.name)))
-    return message.reply(":no_entry: | Jij hebt geen toegang tot dit commando!");
-  const sayMessage = args.join(" ");
 
-  message.delete().catch(O_o => { });
+    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("U heeft niet deze permissies!");
 
-  message.channel.send(sayMessage);
+    var text = args.slice(0).join(" ");
+    message.delete()
+    
+    var sayEmbed = new Discord.RichEmbed()
+        .setDescription(text)
+        .setColor("#bcd1ff")
+        .setFooter("Minetopia Leaks", message.guild.iconURL).setTimestamp()
+    return message.channel.send(sayEmbed);
+
 }
-
 module.exports.help = {
-  name: "say"
+    name: "say"
 }
